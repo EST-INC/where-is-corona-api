@@ -3,15 +3,10 @@ package where.corona.boundary.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import where.corona.boundary.entity.Boundary;
-import where.corona.boundary.entity.BoundaryCollection;
 import where.corona.boundary.repository.BoundaryRepository;
 
-import javax.annotation.PostConstruct;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 @Service

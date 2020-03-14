@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/infection")
+@RequestMapping("/api/infection")
 public class InfectedController {
 
     private final InfectedService infectedService;
@@ -30,5 +30,4 @@ public class InfectedController {
     public ResponseEntity<Infected> updateInfectedData(@RequestBody @Valid InfectedVo infectedVo) {
         return ResponseEntity.ok(infectedService.updateInfectedBoundary(infectedVo));
     }
-
 }
