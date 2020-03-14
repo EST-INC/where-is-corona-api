@@ -1,25 +1,51 @@
 package where.corona.boundary.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import java.util.Properties;
-
-@Data
-@Builder
-@AllArgsConstructor
-@Document
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "type",
+        "id",
+        "properties"
+})
 public class Boundary {
 
     @JsonProperty("type")
     private String type;
     @JsonProperty("id")
-    @Id
     private Integer id;
     @JsonProperty("properties")
-    private Properties properties;
+    private BoundaryProperties properties;
+
+    @JsonProperty("type")
+    public String getType() {
+        return type;
+    }
+
+    @JsonProperty("type")
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @JsonProperty("id")
+    public Integer getId() {
+        return id;
+    }
+
+    @JsonProperty("id")
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @JsonProperty("properties")
+    public BoundaryProperties getProperties() {
+        return properties;
+    }
+
+    @JsonProperty("properties")
+    public void setProperties(BoundaryProperties properties) {
+        this.properties = properties;
+    }
 }
