@@ -11,6 +11,7 @@ import where.corona.infected.model.entity.Infected;
 import where.corona.infected.model.vo.InfectedVo;
 import where.corona.infected.service.InfectedService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -26,10 +27,8 @@ public class InfectedController {
     }
 
     @PostMapping
-    public ResponseEntity<Infected> updateInfectedData(@RequestBody InfectedVo infectedVo) {
+    public ResponseEntity<Infected> updateInfectedData(@RequestBody @Valid InfectedVo infectedVo) {
         return ResponseEntity.ok(infectedService.updateInfectedBoundary(infectedVo));
     }
-
-
 
 }
