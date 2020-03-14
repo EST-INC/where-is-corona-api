@@ -27,14 +27,14 @@ public class BoundaryService {
     }
 
 
-    public void prepareData(List<Boundary> boundaries) {
+    private void prepareData(List<Boundary> boundaries) {
         boundaryRepository.deleteAll();
 
         boundaryRepository.saveAll(boundaries);
     }
 
 
-    @PostConstruct
+//    @PostConstruct
     private void init() throws IOException {
         InputStream inputStream = new ClassPathResource("poland-boundaries.json").getInputStream();
 
