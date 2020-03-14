@@ -5,4 +5,4 @@ info:
     version: 1.0.0
 
 database:
-  mongoUri: ${MONGODB_URI}
+  mongoUri: ${MONGODB_URI:mongodb://heroku_shftb905:c2unfv1auec3v7rtj29abpm9t5@ds219051.mlab.com:19051/heroku_shftb905}
