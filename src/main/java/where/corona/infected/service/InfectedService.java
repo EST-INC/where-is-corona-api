@@ -4,10 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import where.corona.infected.model.entity.Infected;
 import where.corona.infected.model.vo.InfectedVo;
+import where.corona.infected.model.vo.TotalStatistics;
 import where.corona.infected.repository.InfectedRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -19,52 +19,32 @@ public class InfectedService {
         return infectedRepository.findAll();
     }
 
-    public Infected updateInfectedBoundary(InfectedVo infectedVo) {
-        Optional<Infected> infectedOptional = infectedRepository.findByBoundaryId(infectedVo.getBoundaryId());
-        if (infectedOptional.isPresent()) {
-            Infected infected = updateInfectedPeopleData(infectedVo, infectedOptional.get());
-            return infectedRepository.save(infected);
-        } else {
-            return infectedRepository.insert(createInfectedPeopleData(infectedVo));
-        }
+    public TotalStatistics getTotalInfectedDataForBoundary(Integer boundaryId) {
+        List<Infected> infectionsForBoundary = infectedRepository.findByBoundaryId(boundaryId);
+        TotalStatistics totalStatistics = new TotalStatistics();
+
+        infectionsForBoundary.forEach(infected -> {
+            totalStatistics.addTotalInfectedPeople(infected.getInfectedPeople());
+            totalStatistics.addTotalDeadPeople(infected.getDeadPeople());
+            totalStatistics.addTotalRecoveredPeople(infected.getRecoveredPeople());
+        });
+        return totalStatistics;
     }
 
-    private Infected updateInfectedPeopleData(final InfectedVo infectedVo, final Infected infected) {
-        infected.setInfectedPeople(calculatePeopleValue(
-            infected.getInfectedPeople(),
-            infectedVo.getInfectedPeople()
-        ));
-        infected.setRecoveredPeople(calculatePeopleValue(
-            infected.getRecoveredPeople(),
-            infectedVo.getRecoveredPeople()
-        ));
-        infected.setDeadPeople(calculatePeopleValue(
-            infected.getDeadPeople(),
-            infectedVo.getDeadPeople()
-        ));
-        return infected;
+    public Infected updateInfectedBoundary(InfectedVo infectedVo) {
+        return infectedRepository.insert(createInfectedPeopleData(infectedVo));
     }
 
     private Infected createInfectedPeopleData(final InfectedVo infectedVo) {
-        int defaultPeopleValue = 0;
         Infected infected = new Infected();
-        infected.setInfectedPeople(calculatePeopleValue(
-            defaultPeopleValue,
-            infectedVo.getInfectedPeople()
-        ));
-        infected.setRecoveredPeople(calculatePeopleValue(
-            defaultPeopleValue,
-            infectedVo.getRecoveredPeople()
-        ));
-        infected.setDeadPeople(calculatePeopleValue(
-            defaultPeopleValue,
-            infectedVo.getDeadPeople()
-        ));
+        infected.setInfectedPeople(calculatePeopleValue(infectedVo.getInfectedPeople()));
+        infected.setRecoveredPeople(calculatePeopleValue(infectedVo.getRecoveredPeople()));
+        infected.setDeadPeople(calculatePeopleValue(infectedVo.getDeadPeople()));
         infected.setBoundaryId(infectedVo.getBoundaryId());
         return infected;
     }
 
-    private Integer calculatePeopleValue(Integer fromInfected, Integer fromVO) {
-        return fromVO == null ? fromInfected : fromInfected + fromVO;
+    private Integer calculatePeopleValue(Integer fromVO) {
+        return fromVO == null ? 0 : fromVO;
     }
 }

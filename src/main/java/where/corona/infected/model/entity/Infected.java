@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
 public class Infected {
     @Id
     private String id;
-    private String boundaryId;
+    private Integer boundaryId;
     @NotNull
     private Integer infectedPeople;
     @NotNull
