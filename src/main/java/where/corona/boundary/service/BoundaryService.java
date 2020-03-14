@@ -22,7 +22,7 @@ public class BoundaryService {
     }
 
 
-    public void prepareData(List<Boundary> boundaries) {
+    private void prepareData(List<Boundary> boundaries) {
         boundaryRepository.deleteAll();
 
         boundaryRepository.saveAll(boundaries);
@@ -30,16 +30,16 @@ public class BoundaryService {
 
 
 //    @PostConstruct
-//    private void init() throws IOException {
-//        InputStream inputStream = new ClassPathResource("poland-boundaries.json").getInputStream();
-//
-//        try {
-//            BoundaryCollection boundaries = mapper.readValue(inputStream, BoundaryCollection.class);
-//            prepareData(boundaries.getFeatures());
-//            log.info("Saved boundaries");
-//        } catch (IOException e) {
-//            log.error("Unable to save boundaries: " + e.getMessage());
-//        }
-//    }
+    private void init() throws IOException {
+        InputStream inputStream = new ClassPathResource("poland-boundaries.json").getInputStream();
+
+        try {
+            BoundaryCollection boundaries = mapper.readValue(inputStream, BoundaryCollection.class);
+            prepareData(boundaries.getFeatures());
+            log.info("Saved boundaries");
+        } catch (IOException e) {
+            log.error("Unable to save boundaries: " + e.getMessage());
+        }
+    }
 }
 
