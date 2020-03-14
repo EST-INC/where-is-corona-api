@@ -9,6 +9,7 @@ import where.corona.boundary.entity.Boundary;
 import where.corona.boundary.entity.BoundaryCollection;
 import where.corona.boundary.repository.BoundaryRepository;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;

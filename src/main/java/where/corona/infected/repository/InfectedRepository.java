@@ -3,8 +3,8 @@ package where.corona.infected.repository;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import where.corona.infected.model.entity.Infected;
 
-import java.util.Optional;
+import java.util.List;
 
 public interface InfectedRepository extends MongoRepository<Infected, String> {
-    Optional<Infected> findByBoundaryId(String boundaryId);
+    List<Infected> findByBoundaryId(Integer boundaryId);
 }
