@@ -15,7 +15,10 @@ public class DbConfig {
     @Bean
     public MongoClient getMongoClient(@Value("database.mongoUri") String mongoUri) {
 
-        log.info(mongoUri);
+        log.info("URI OD MONGO" + mongoUri);
+
+        log.info("URI OD MONGO PRZEZ SYSTEN EBV" + System.getenv("MONGODB_URI"));
+
 
         MongoClientURI mongoClientURI = new MongoClientURI("mongodb://heroku_shftb905:c2unfv1auec3v7rtj29abpm9t5@ds219051.mlab.com:19051/heroku_shftb905");
 
