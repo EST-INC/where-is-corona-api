@@ -21,8 +21,8 @@ public class InfectedService {
     public Infected updateInfectedBoundary(InfectedVo infectedVo) {
 
         return infectedRepository.insert(Infected.builder()
-                .boundaryId(infectedVo.getBoundaryId())
-                .boudaryName(infectedVo.getBoudaryName())
-                .build());
+            .boundaryId(infectedVo.getBoundaryId())
+            .infectedPeople(infectedVo.getInfectedPeople())
+            .build());
     }
 }

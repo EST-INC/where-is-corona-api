@@ -14,5 +14,5 @@ public class Infected {
     @Id
     private String id;
     private String boundaryId;
-    private String boudaryName;
+    private Integer infectedPeople;
 }

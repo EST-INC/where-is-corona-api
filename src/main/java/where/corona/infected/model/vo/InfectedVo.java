@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 public class InfectedVo {
 
     private String boundaryId;
-    private String boudaryName;
+    private Integer infectedPeople;
 }
