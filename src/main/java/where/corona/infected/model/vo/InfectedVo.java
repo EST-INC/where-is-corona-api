@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 public class InfectedVo {
 
     @NotNull
-    private String boundaryId;
+    private Integer boundaryId;
     private Integer infectedPeople;
     private Integer recoveredPeople;
     private Integer deadPeople;
