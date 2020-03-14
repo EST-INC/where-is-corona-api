@@ -22,7 +22,7 @@ public class InfectedService {
 
         return infectedRepository.insert(Infected.builder()
             .boundaryId(infectedVo.getBoundaryId())
-            .boudaryName(infectedVo.getBoudaryName())
+            .infectedPeople(infectedVo.getInfectedPeople())
             .build());
     }
 }
