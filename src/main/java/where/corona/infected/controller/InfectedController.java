@@ -24,8 +24,8 @@ public class InfectedController {
     private final InfectedService infectedService;
 
     @GetMapping
-    public ResponseEntity<List<Infected>> getInfectedBoundaries() {
-        return ResponseEntity.ok(infectedService.getInfectedBoundaries());
+    public ResponseEntity<List<TotalStatistics>> getStatisticsForAllBoundaries() {
+        return ResponseEntity.ok(infectedService.getStatisticsForAllBoundaries());
     }
 
     @GetMapping("/{boundaryId}")
