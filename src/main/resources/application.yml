@@ -1,0 +1,8 @@
+info:
+  app:
+    name: Coronavirus location application
+    description: Where is coronavirus now?
+    version: 1.0.0
+
+database:
+  mongoUri: ${MONGODB_URI}
