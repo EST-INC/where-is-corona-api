@@ -1,0 +1,10 @@
+info:
+  app:
+    name: Coronavirus location application
+    description: Where is coronavirus now?
+    version: 1.0.0
+
+spring:
+    data:
+        mongodb:
+            uri: mongodb://heroku_shftb905:c2unfv1auec3v7rtj29abpm9t5@ds219051.mlab.com:19051/heroku_shftb905?retryWrites=false
