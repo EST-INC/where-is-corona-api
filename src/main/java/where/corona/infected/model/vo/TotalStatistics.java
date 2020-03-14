@@ -8,11 +8,13 @@ public class TotalStatistics {
     private Integer totalInfectedPeople;
     private Integer totalRecoveredPeople;
     private Integer totalDeadPeople;
+    private Integer boundaryId;
 
-    public TotalStatistics() {
+    public TotalStatistics(Integer boundaryId) {
         this.totalInfectedPeople = 0;
         this.totalDeadPeople = 0;
         this.totalRecoveredPeople = 0;
+        this.boundaryId = boundaryId;
     }
 
     public void addTotalInfectedPeople(Integer value) {

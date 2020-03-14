@@ -6,5 +6,8 @@ import where.corona.infected.model.entity.Infected;
 import java.util.List;
 
 public interface InfectedRepository extends MongoRepository<Infected, String> {
+
     List<Infected> findByBoundaryId(Integer boundaryId);
+
+    List<Infected> findByBoundaryIdIn(List<Integer> boundaryId);
 }
