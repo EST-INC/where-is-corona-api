@@ -11,7 +11,7 @@ import where.corona.boundary.service.BoundaryService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/boundaries")
+@RequestMapping("/api/boundaries")
 @RequiredArgsConstructor
 public class BoundaryController {
 
